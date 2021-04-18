@@ -1,9 +1,9 @@
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from flask_wtf import FlaskForm
+from flask_wtf.file import FileAllowed, FileField
 from flaskblog.models import User
+from wtforms import BooleanField, PasswordField, StringField, SubmitField
+from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
 
 class RegistrationForm(FlaskForm):
@@ -44,7 +44,9 @@ class UpdateAccountForm(FlaskForm):
         "Username", validators=[DataRequired(), Length(min=3, max=25)]
     )
     email = StringField("Email", validators=[DataRequired(), Email()])
-    picture = FileField("Update Profile Pic", validators=[FileAllowed(["jpg", "png"])])
+    picture = FileField(
+        "Update Profile Pic", validators=[FileAllowed(["jpg", "jpeg", "png"])]
+    )
     submit = SubmitField("Update")
 
     def validate_username(self, username):
@@ -60,12 +62,6 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError("Email already exists.")
-
-
-class PostForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired()])
-    content = TextAreaField("Content", validators=[DataRequired()])
-    submit = SubmitField("Post")
 
 
 class RequestResetForm(FlaskForm):
