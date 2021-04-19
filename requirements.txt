@@ -40,7 +40,6 @@ pycparser==2.20
 pyrsistent==0.17.3
 regex==2021.3.17
 requests==2.25.1
-setuptools==52.0.0.post20210125
 six==1.15.0
 SQLAlchemy==1.4.5
 toml==0.10.2
