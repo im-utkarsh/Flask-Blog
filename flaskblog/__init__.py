@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flaskblog.config import Config
 
 db = SQLAlchemy()
+db.create_all()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = "users.login"
@@ -23,8 +24,6 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
-
-    # db.create_all()
 
     from flaskblog.errors.handlers import errors
     from flaskblog.main.routes import main
