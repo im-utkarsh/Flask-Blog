@@ -24,7 +24,7 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
 
-    db.create_all()
+    # db.create_all()
 
     from flaskblog.errors.handlers import errors
     from flaskblog.main.routes import main
