@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flaskblog.config import Config
 
 db = SQLAlchemy()
-db.create_all()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = "users.login"
