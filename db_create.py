@@ -1,3 +1,6 @@
+from flask import current_app as app
+
 from flaskblog import db
 
-db.create_all()
+with app.app_context():
+    db.create_all()
