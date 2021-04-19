@@ -38,7 +38,6 @@ pip==21.0.1
 psycopg2==2.8.6
 pycparser==2.20
 pyrsistent==0.17.3
-pywin32==300
 regex==2021.3.17
 requests==2.25.1
 setuptools==52.0.0.post20210125
